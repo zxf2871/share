@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<title>测试</title>
+<script>
+    <!--由于对象映射，所以调用test对象等于调用Android映射的对象-->
+    function callAndroid(){
+        nameSpace.callAndroidMethod("js调用了android中的hello方法");
+    }
+
+</script>
+<body>
+<!--点击按钮则调用callAndroid函数-->
+<button type="button" id="button1" name="点击调用callAndroidMethod方法" onclick="callAndroid()"></button>
+</body>
+</html>
