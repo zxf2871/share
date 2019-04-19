@@ -2,17 +2,18 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 </head>
 <title>测试</title>
-<script>
+<script type="text/javascript">
     <!--由于对象映射，所以调用test对象等于调用Android映射的对象-->
     function callAndroid(){
-        nameSpace.callAndroidMethod("js调用了android中的hello方法");
+        nameSpace.callAndroidMethod("js点击调用callAndroidMethod方法");
     }
 
 </script>
 <body>
 <!--点击按钮则调用callAndroid函数-->
-<button type="button" id="button1" name="点击调用callAndroidMethod方法" onclick="callAndroid()"></button>
+<input type="button" id="button1" value="点击调用callAndroidMethod方法" onclick="callAndroid()"/>
 </body>
 </html>
