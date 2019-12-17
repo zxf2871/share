@@ -2,6 +2,8 @@ android 源码编译:
 
 1 操作系统: 建议使用 ubuntu.  ubuntu-18.04;  目前mac升级到10.15 catalina之后 编译环境已经不能再编译aosp.
 2 环境依赖: 一个一个执行.
+    sudo apt-get install git
+    sudo apt-get install python
 	sudo apt-get install libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-dev g++-multilib
 	sudo apt-get install -y git flex bison gperf build-essential libncurses5-dev:i386
 	sudo apt-get install tofrodos python-markdown libxml2-utils xsltproc zlib1g-dev:i386
@@ -15,11 +17,15 @@ android 源码编译:
 
 	如果有冲突则卸载原来的包 如zlib1g-dev:i386
 
-	sudo apt remove zlib1g-dev:i386
-	重新安装:
-	sudo dpkg -i --ignore-depends=lib32z1-dev lib32z1-dev.deb
+    apt安装时提示“The following packages have unmet dependencies”错误的解决方法
+        解决方法：
+
+        1.安装aptitude
+        sudo apt-get install aptitude
 
 
+        2.利用aptitude来安装
+        sudo aptitude install python-dev
 
 
 3 下载源码:
@@ -71,3 +77,5 @@ android 源码编译:
 		out/target/product/generic/system/lib/hw 目录存放的是硬件抽象层（HAL）接口文件  什么是HAL: https://blog.csdn.net/flydream0/article/details/7086273
 
 8 android 系统框架: https://blog.csdn.net/itachi85/article/details/54695046
+
+注意: 1 路径使用不要使用中文.
