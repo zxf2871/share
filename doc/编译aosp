@@ -1,0 +1,73 @@
+android 源码编译:
+
+1 操作系统: 建议使用 ubuntu.  ubuntu-18.04;  目前mac升级到10.15 catalina之后 编译环境已经不能再编译aosp.
+2 环境依赖: 一个一个执行.
+	sudo apt-get install libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-dev g++-multilib
+	sudo apt-get install -y git flex bison gperf build-essential libncurses5-dev:i386
+	sudo apt-get install tofrodos python-markdown libxml2-utils xsltproc zlib1g-dev:i386
+	sudo apt-get install dpkg-dev libsdl1.2-dev libesd0-dev
+	sudo apt-get install git-core gnupg flex bison gperf build-essential
+	sudo apt-get install zip curl zlib1g-dev gcc-multilib g++-multilib
+	sudo apt-get install libc6-dev-i386
+	sudo apt-get install lib32ncurses5-dev x11proto-core-dev libx11-dev
+	sudo apt-get install libgl1-mesa-dev libxml2-utils xsltproc unzip m4
+	sudo apt-get install lib32z-dev ccache
+
+	如果有冲突则卸载原来的包 如zlib1g-dev:i386
+
+	sudo apt remove zlib1g-dev:i386
+	重新安装:
+	sudo dpkg -i --ignore-depends=lib32z1-dev lib32z1-dev.deb
+
+
+
+
+3 下载源码:
+	repo
+	确保 home下有bin 并把bin添加的PATH中
+		mkdir ~/bin
+		PATH=~/bin:$PATH
+
+	下载repo
+		curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+		chmod a+x ~/bin/repo
+
+	初始化 repo 用来下载源码
+		repo init -u https://github.com/MoKee/android -b mkp --depth 1
+	mkp 为分支名 MK90.0分支名
+
+	同步源码:
+		repo sync
+	同步源码时开始下载源码. android 9.0源码 包括.repo 一共60G.
+
+	有的时候同步下来的代码某个模块可能出现问题. 而且 使用repo sync一直报错. 则可以使用
+	强制同步:
+		repo sync --force-sync 模块
+4 环境初始化执行命令:
+	. build/envsetup.sh
+
+	执行该命令之后会有其他更多命令可使用:
+		m: 完整编译
+		mm: cd到带有mk文件的指定目录进行部分编译
+		mmm: 直接跟带有mk文件的目录.指定部分编译
+
+5 选择目标设备.
+	lunch
+	lunch会有个列表列出可打包的系统
+	直接选择数字,回车
+
+6 开始打包
+	mka bacon
+	或
+	make -j8   数字8表示建议使用的线程为cpu 核心的两倍.
+
+
+7 单独编译:
+	使用mmm指定模块编译, 如: 编译Email模块
+		mmm packages/apps/Email/
+	编译之后在 out/target/product/generic/system/app 可以看到有该app  这个目录存放了系统自带的所有的App;
+		out/target/product/generic/system/bin  目录存放c编译的可执行文件
+		out/target/product/generic/system/lib 目录存放了动态链接库文件
+		out/target/product/generic/system/lib/hw 目录存放的是硬件抽象层（HAL）接口文件  什么是HAL: https://blog.csdn.net/flydream0/article/details/7086273
+
+8 android 系统框架: https://blog.csdn.net/itachi85/article/details/54695046
