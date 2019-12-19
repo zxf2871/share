@@ -1,7 +1,12 @@
 android 源码编译:
 
 1 操作系统: 建议使用 ubuntu.  ubuntu-18.04;  目前mac升级到10.15 catalina之后 编译环境已经不能再编译aosp.
-2 环境依赖: 一个一个执行.
+2 环境依赖:
+
+sudo apt-get install git bc bison build-essential curl flex g++-multilib gcc-multilib gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc yasm zip zlib1g-dev python
+
+
+ 一个一个执行.
     sudo apt-get install git
     sudo apt-get install python
 	sudo apt-get install libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-dev g++-multilib
@@ -40,6 +45,11 @@ android 源码编译:
 
 	初始化 repo 用来下载源码
 		repo init -u https://github.com/MoKee/android -b mkp --depth 1
+		repo init -u https://android.googlesource.com/a/platform/manifest -b android-9.0.0_r33
+		repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-9.0.0_r33
+
+		repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-10.0.0_r2
+
 	mkp 为分支名 MK90.0分支名
 
 	同步源码:
