@@ -87,5 +87,5 @@ sudo apt-get install git bc bison build-essential curl flex g++-multilib gcc-mul
 		out/target/product/generic/system/lib/hw 目录存放的是硬件抽象层（HAL）接口文件  什么是HAL: https://blog.csdn.net/flydream0/article/details/7086273
 
 8 android 系统框架: https://blog.csdn.net/itachi85/article/details/54695046
-
+system/core/include/private/android_filesystem_config.h
 注意: 1 路径使用不要使用中文.
