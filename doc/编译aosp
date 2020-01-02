@@ -50,6 +50,8 @@ sudo apt-get install git bc bison build-essential curl flex g++-multilib gcc-mul
 
 		repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-10.0.0_r2
 
+		https://source.android.com/setup/start/build-numbers#source-code-tags-and-builds  这里选择一个版本
+
 	mkp 为分支名 MK90.0分支名
 
 	同步源码:
@@ -73,7 +75,7 @@ sudo apt-get install git bc bison build-essential curl flex g++-multilib gcc-mul
 	直接选择数字,回车
 
 6 开始打包
-	mka bacon
+	nohup  mka bacon 2>&1 | tee mokee_log.txt
 	或
 	make -j8   数字8表示建议使用的线程为cpu 核心的两倍.
 
